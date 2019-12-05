@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+      <title><%= title %></title>
+      <link rel="stylesheet" href="stylesheets/temp_teletext/index_1.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+      <link rel="icon" href="favicon.ico">      
+      <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+      <script src="javascripts/libs/flexible/flexible_css.js"></script>
+      <script src="javascripts/libs/flexible/flexible.js"></script>
+      <style>
+          #star{width:2.4rem;height:1.73rem;position:absolute;top:1.5rem; left:0.5rem;z-index: 3; }
+            #left_bottom{  width: 2.28rem;height:9.02rem;
+                position: absolute;
+                bottom:0;
+                left:0;
+                z-index: 3;
+            }
+            #middle {
+                width: 10rem;
+                height: 5.28rem;
+                position: absolute;
+                bottom: -1.5rem;
+                right: 0;
+                z-index: 2;
+            }
+
+            #right_bottom{
+                width: 2.77rem;height:3.04rem;
+                position: absolute;
+                bottom:0rem;
+                right:0;
+                z-index: 2;
+            }
+            #top_bottom{
+                width: 6.58rem;height:7.09rem;
+                position: absolute;
+                top:2rem;
+                right:0;
+                z-index: 2;
+            }
+            #top_right{
+                width: 8.05rem;
+                height: 2.66rem;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 3;
+            }
+          .petalBox img{position: absolute;}
+          #bg_01{width:100%;height:2.32rem;background:url("images/temp_teletext/temp6/bg_01.jpg") no-repeat center;  background-size: 100% 100%;position: relative; }
+          #bg_02{width:100%;height:2.373rem;background:url("images/temp_teletext/temp6/bg_02.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_03{width:100%;height:2.053rem;background:url("images/temp_teletext/temp6/bg_03.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_04{width:100%;height:2.253rem;background:url("images/temp_teletext/temp6/bg_04.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_05{width:100%;height:2.186rem;background:url("images/temp_teletext/temp6/bg_05.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_06{width:100%;height:2.28rem;background:url("images/temp_teletext/temp6/bg_06.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_07{width:100%;height:2.186rem;background:url("images/temp_teletext/temp6/bg_07.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          #bg_08{width:100%;height:2.133rem;background:url("images/temp_teletext/temp6/bg_08.jpg") no-repeat center;  background-size: 100% 100%;position: relative;  }
+          .tem_wrap{  width:100%;  height:100%;  position: relative;  overflow-y: auto; }
+          #wrapper{
+              width: 100%;
+              height: 100%;
+              background:url('images/temp_teletext/temp6/bg.jpg') no-repeat center;
+              background-size: 100% 100%;
+          }
+          #content{  width:100%;  height:auto;  overflow: hidden;  position: absolute;z-index:3; }
+          #inner{  width:100%;  margin-top:4rem;  margin-bottom:4rem;  }
+          .photoTitle{  font-size: 23px;  font-weight: 600;  text-align: center;  width: 100%;  color:#3f291f;  }
+          #inner img{  width:6.4rem;  display: block;  margin:0 auto;  }
+          .imgTitle{  width:8rem;  font-size: 15px;  color:#3f291f;  line-height: 20px;  margin:0.5rem auto;  text-align: center;  }
+          #bottom_ink img{  width: 10rem;  height: 9.56rem;  }
+          #contentWrap{  width: 100%;height:auto;position: absolute;top:0;left:0;overflow: hidden;z-index: 4;}
+          #bgMusic{position: absolute;}
+          /*.imgWrap{position:relative;width:6.4rem;height:6.4rem;margin: 0 auto; background-image:url('images/static.png');background-size: 100% 100%;}*/
+          .listWrap{
+              width:6.4rem;
+              margin:0 auto;
+              background-size: 100% 100%;
+              position: relative;
+              border:5px solid #fff;
+              border-radius: 5px;
+          }
+      </style>
+  </head>
+  <body onload="loaded()">
+    <div style="width:100%;height:100%;position: absolute;top:0;left:0;background:#f6e7ba; ">
+        <!--<div id="bg_01"></div>-->
+        <!--<div id="bg_02"></div>-->
+        <!--<div id="bg_03"></div>-->
+        <!--<div id="bg_04"></div>-->
+        <!--<div id="bg_05"></div>-->
+        <!--<div id="bg_06"></div>-->
+        <!--<div id="bg_07"></div>-->
+        <!--<div id="bg_08"></div>-->
+        <img id="star" class="leftBottomStart" src="images/temp_teletext/temp6/star.png" alt="">
+        <img id="left_bottom" src="images/temp_teletext/temp6/1_3.png" alt="">
+        <img id="middle" src="images/temp_teletext/temp6/1_5.png" alt="">
+        <img id="right_bottom" src="images/temp_teletext/temp6/1_7.png" alt="">
+        <img id="top_bottom" src="images/temp_teletext/temp6/1_11.png" alt="">
+        <img id="top_right" src="images/temp_teletext/temp6/1.png" alt="">
+    </div>
+    <audio id="bgMusic"  autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+    <div id="bgMusicControl" class="bgMusicPlay"></div>
+    <div class="tem_wrap"  id="wrapper">
+        <div id="content">
+            <div id="inner">
+                <p class="photoTitle"><%= title%></p>
+                <ul>
+                    <% for (var i=0; i<list.length; i++) { %>
+                    <li>
+                        <p class="imgTitle"><%= list[i].des%></p>
+                        <div class="listWrap">
+                          <div class="imgWrap" style="height: 6.7rem;">
+                            <img class="showimg" loadSrc="<%= list[i].resUrl%>!viewWidth">
+                          </div>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script>
+      //保存当前相册选择的音乐id和模板信息
+      var selectTemplateId = "<%= templateId%>";
+      var selectSongId = "<%= songId%>";
+      var albumType = "<%= postType%>";
+  </script>
+  <script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+  <script src="javascripts/libs/zepto/fastclick.js"></script>
+  <script src="javascripts/libs/zepto/fx.js"></script>
+  <script src="javascripts/libs/zepto/touch.js"></script>
+  <script src="javascripts/common/mod/queryString.js"></script>
+  <script src="javascripts/common/mod/subString.js"></script>
+  <!--<script src="javascripts/index/index_01.js"></script>-->
+  <script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+  <script src="javascripts/common/cpt/iscroll.js"></script>
+  <script src="javascripts/common/cpt/lazyLoad.js"></script>
+</html>

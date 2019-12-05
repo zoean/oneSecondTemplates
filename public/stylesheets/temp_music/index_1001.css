@@ -1,0 +1,358 @@
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, blockquote, pre, form, input, textarea, fieldset, table, thead, th, tr, td {
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, select, textarea {
+  font-family: "Microsoft Yahei", Arial;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  font-size: 12px;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fff2d8;
+}
+
+input, select {
+  border: 0;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+.clearfix {
+  display: block;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.w07 {
+  width: 7%;
+}
+
+.wb {
+  width: 5%;
+}
+
+.w1 {
+  width: 10%;
+}
+
+.w11 {
+  width: 11%;
+}
+
+.w1b {
+  width: 15%;
+}
+
+.w2 {
+  width: 20%;
+}
+
+.w2b {
+  width: 25%;
+}
+
+.w3 {
+  width: 30%;
+}
+
+.w3b {
+  width: 35%;
+}
+
+.w4 {
+  width: 40%;
+}
+
+.w4b {
+  width: 45%;
+}
+
+.w5 {
+  width: 50%;
+}
+
+.w5b {
+  width: 55%;
+}
+
+.w6 {
+  width: 60%;
+}
+
+.w7 {
+  width: 75%;
+}
+
+#topbar {
+  width: 100%;
+  height: 50px;
+  background: #101f29;
+}
+#topbar .wrap {
+  width: 980px;
+  height: 50px;
+  position: relative;
+  margin: 0 auto;
+}
+#topbar .wrap img {
+  float: left;
+  margin-top: 4px;
+}
+#topbar .wrap ul {
+  display: inline-block !important;
+  *display: inline;
+  zoom: 1;
+  float: right;
+  height: 50px;
+  _width: 50%;
+}
+#topbar .wrap ul li {
+  padding: 0 5px;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+#topbar .wrap ul li span {
+  color: #fff;
+  font-size: 14px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+#topbar .wrap ul li span b {
+  font-weight: 100;
+}
+#topbar .wrap ul li span em {
+  font-style: inherit;
+}
+
+h2.copyRight {
+  font-size: 16px;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 15px;
+  font-weight: normal;
+}
+
+#footer {
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  /*position:fixed;
+  bottom:0;
+  left:0;
+  z-index:10;
+  background:url(../images/alpha_bg.png) repeat-x;
+   _position:absolute;
+  _bottom:auto;
+   _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+  */
+}
+#footer .foot_wrap {
+  width: 675px;
+  margin: 0 auto;
+}
+#footer .foot_wrap .foot_r {
+  width: 400px;
+  float: left;
+  margin-top: 10px;
+  line-height: 22px;
+}
+#footer .foot_wrap a {
+  color: #fff;
+  font-size: 12px;
+  padding: 0 8px;
+}
+#footer .foot_wrap a img {
+  margin: 15px 20px 0 30px;
+  float: left;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+body .tem_wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+body .tem_wrap p {
+  width: 100%;
+  background-size: 100% 100%;
+  background-position: center top;
+  z-index: 6;
+}
+body .tem_wrap p.bg1 {
+  background-image: url(../../images/temp_music/temp1/bg_01.png);
+  height: 3.53rem;
+}
+body .tem_wrap p.bg2 {
+  background-image: url(../../images/temp_music/temp1/bg_02.png);
+  height: 3.53rem;
+}
+body .tem_wrap p.bg3 {
+  background-image: url(../../images/temp_music/temp1/bg_03.png);
+  height: 3.53rem;
+}
+body .tem_wrap p.bg4 {
+  background-image: url(../../images/temp_music/temp1/bg_04.png);
+  height: 3.53rem;
+}
+body .tem_wrap p.bg5 {
+  background-image: url(../../images/temp_music/temp1/bg_05.png);
+  height: 4.65rem;
+}
+
+body #bgMusicControl {
+  position: absolute;
+  width: 0.96rem;
+  height: 0.96rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 5;
+}
+body .bgMusicPause {
+  background-image: url(../../images/sprite/audiostop.png);
+  background-size: cover;
+  animation: none;
+}
+body .bgMusicPlay {
+  background-image: url(../../images/sprite/audioplay.png);
+  background-size: cover;
+  animation: audioRotate 5s linear infinite;
+}
+
+body .animat_item .animat_crane {
+  z-index: 3;
+}
+body .animat_item .animat_crane img {
+  position: absolute;
+  opacity: 0;
+
+}
+body .animat_item .animat_crane .crane1 {
+  width: 1rem;
+  height: 1rem;
+  animation: craneMove 26s 0s linear infinite;
+}
+body .animat_item .animat_crane .crane2 {
+  width: 1.33rem;
+  height: 1.33rem;
+  animation: craneMove2 30s 8s linear infinite;
+}
+body .animat_item .animat_crane .crane3 {
+  height: 1rem;
+  height: 1rem;
+  animation: craneMove3 26s 16s linear infinite;
+}
+body .animat_item .animat_crane .crane4 {
+  height: 1.33rem;
+  animation: craneMove4 26s 30s linear infinite;
+}
+body .animat_item .animat_crane .crane5 {
+  width: 1.27rem;
+  height: 1.27rem;
+  animation: craneMove5 26s 40s linear infinite;
+}
+body .animat_item .animat_crane .crane6 {
+  width: 1.07rem;
+  height: 1.07rem;
+  animation: craneMove6 30s 50s linear infinite;
+}
+body .animat_item .animat_crane .crane7 {
+  height: 1rem;
+  width: 1rem;
+  animation: craneMove7 25s 60s linear infinite;
+} 
+
+body .animat_item #animat_photo ul li span.photo{
+  background: url('../../../images/temp_music/temp1/temp1_photo_border1.png');
+  background-size: 100% 100%;
+  display: block;
+}
+
+body .animat_item #animat_photo ul li span.photo span.filter { 
+  width: 90%;
+  height: 90%;
+  padding: 5%;
+  display: block;
+  position: relative;
+}
+
+body .animat_item #animat_photo ul li span.photo span.filter img{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 6;
+}
+body .animat_item #animat_photo ul li span.photo span.filter span.filterImg{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   z-index: 7;
+   left: 0;
+   top: 0;
+   background: url(../../../images/temp_music/temp1/filter.png) no-repeat;
+   background-size: 100% 100%;
+ }
+body .animat_item #animat_photo ul li span.photo span.filter span.loadimg{
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  z-index: 5;
+  left: 10%;
+  top: 10%;
+  background: url(../../../images/static.png) no-repeat;
+  background-size: 100% 100%;
+}

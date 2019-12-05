@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="stylesheets/common/cpt/photo_animate.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+    <link rel="stylesheet" href="stylesheets/temp_music/index_1000.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <script src="javascripts/libs/flexible/flexible_css.js"></script>
+    <script src="javascripts/libs/flexible/flexible.js"></script>
+    <style>
+        .flower-leftTop{width:8.74rem;height: 5.213rem;position:absolute;top:-0.2rem;left:-0.8rem;transform-origin:0 0;animation:flowerLeftTopMove 5s linear 0s infinite;}
+        .flower-leftBottom{width:5rem;height:5.2rem;position:absolute;bottom:0;left:0;}
+        .flower-rightBottom{width: 3.8rem;height: 4.266rem;position: absolute;bottom: 0;  right: -0.3rem;  transform-origin: right bottom;  animation: flowerRightBottomMove 4s linear 0s infinite;  }
+        .flower-rightTop{  width: 3.2rem;  height: 4.16rem;  position: absolute;  top: 5.4rem;  right: -0.38rem;  transform-origin: right 0;  animation: flowerLeftTopMove 6s linear 0s infinite;  }
+        .butterfly{  width: 1.48rem;  height: 1.4rem;  position: absolute;  top: 70%;  left: -1.48rem;  z-index:99;  transform-origin: -3rem -7rem;  animation: butterflyMove 30s linear 0s infinite;  }
+        @keyframes flowerLeftTopMove { 0%{transform: rotate(0deg);} 50%{transform: rotate(-8deg);} 100%{transform: rotate(0deg);} }
+        @keyframes flowerRightTopMove { 0%{transform: rotate(0deg);} 50%{transform: rotate(-10deg);} 100%{transform: rotate(0deg);} }
+        @keyframes flowerRightBottomMove { 0%{transform: rotate(0deg);} 50%{transform: rotate(-3deg);} 100%{transform: rotate(0deg);} }
+        @keyframes butterflyMove { 0%{transform: rotate(0deg);} 100%{transform: rotate(-120deg);} }
+        .petalBox{  width: 100%;  height: 100%;  position: absolute;  top: 0;  left: 0;  z-index: 4;  }
+        .luoye{  position: absolute;  left: 10%;  top: 20%;  z-index: 10;  }
+        .luoye{  animation: luoye 15s linear 0s infinite;  }
+        .luoye1{  animation: luoye1 12s linear 0s infinite;  }
+        .luoye2{  animation: luoye2 10s linear 0s infinite;  }
+        .luoye3{  animation: luoye3 8s linear 0s infinite;  }
+        .luoye4{  animation: luoye4 10s linear 0s infinite;  }
+        .luoye5{  animation: luoye5 8s linear 0s infinite;  }
+        .luoye6{  animation: luoye7 13s ease 0s infinite;  }
+        @keyframes luoye { from{transform: rotate(0deg);opacity: 1;left: 10%;top: 20%;} to{transform: rotate(720deg);opacity: 0.5;left: 110%;top: 60%;} }
+        @keyframes luoye1 { from{transform: rotate(0deg);opacity: 1;left: 20%;top: 30%;} to{transform: rotate(-580deg);opacity: 0.6;left: 110%;top: 50%;} }
+        @keyframes luoye2 { from{transform: rotate(0deg);opacity: 1;left: 5%;top: 0%;} to{transform: rotate(360deg);opacity: 0.5;left: 110%;top: 40%;} }
+        @keyframes luoye3 { from{transform: rotate(0deg);opacity: 1;left: 0%;top: 70%;} to{transform: rotate(-360deg);opacity: 0.5;left: 110%;top: 100%;} }
+        @keyframes luoye4 { from{transform: rotate(0deg);opacity: 1;left: 0%;top: 30%;} to{transform: rotate(360deg);opacity: 0.5;left: 110%;top: 70%;} }
+        @keyframes luoye5 { from{transform: rotate(0deg);opacity: 1;left: 70%;top: 0%;} to{transform: rotate(-360deg);opacity: 0.5;left: 110%;top: 40%;} }
+        @keyframes luoye6 { from{transform: rotate(0deg);opacity: 1;left: 5%;top: 10%;} to{transform: rotate(-360deg);opacity: 0.5;left: 80%;top: 100%;} }
+        @keyframes luoye7 { from{transform: rotate(0deg);opacity: 1;left: 5%;top: 10%;} to{transform: rotate(360deg);opacity: 0.5;left: 110%;top: 100%;} }
+        #bgMusic{position: absolute;}
+        .photo{
+            background:url('images/static.gif') no-repeat center;background-size: 100% 100%;
+            border: 7px solid #fff;
+            border-radius: 10px;
+        }
+        .showimg{
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<audio id="bgMusic"  autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+<div id="bgMusicControl" class="bgMusicPlay"></div>
+<div class="tem_wrap">
+    <p class="bg1"></p>
+    <p class="bg2"></p>
+    <p class="bg3"></p>
+    <p class="bg4"></p>
+    <p class="bg5"></p>
+    <p class="bg6"></p>
+    <p class="bg7"></p>
+    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;">
+        <img class="flower-leftTop" src="images/temp_music/temp2/flower_05.png" alt="">
+        <img class="flower-leftBottom" src="images/temp_music/temp2/flower_03.png" alt="">
+        <img class="flower-rightBottom" src="images/temp_music/temp2/bird.png" alt="">
+        <img class="flower-rightTop" src="images/temp_music/temp2/flower_04.png" alt="">
+        <img class="butterfly" src="images/temp_music/temp2/Butterfly.png" alt="">
+    </div>
+    <div class="petalBox">
+
+    </div>
+    <div class="animat_item">
+        <div id="animat_photo">
+            <ul long="<%= list.length %>">
+                <li>
+                    <span class="photo" >
+                        <img class="showimg"  alt="" />
+                    </span>
+                    <span class="photo" >
+                        <img class="showimg"  alt="" />
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <ul id="saveImgSrc"  style="display: none;">
+        </ul>
+        <div id="loadimgWrap" style="display: none;">
+            <img  alt="">
+            <img  alt="">
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script>
+    //保存当前相册选择的音乐id和模板信息
+    var selectTemplateId = "<%= templateId%>";
+    var selectSongId = "<%= songId%>";
+    var albumType = "<%= postType%>";
+    var tempId = "<%= id%>";
+</script>
+<script src="javascripts/libs/jquery-3.3.1.min.js"></script>
+<script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+<script src="javascripts/libs/zepto/fastclick.js"></script>
+<script src="javascripts/libs/zepto/fx.js"></script>
+<script src="javascripts/libs/zepto/touch.js"></script>
+<script src="javascripts/common/mod/queryString.js"></script>
+<script src="javascripts/common/mod/subString.js"></script>
+<script src="javascripts/common/cpt/index.js"></script>
+<script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+<script>
+    wx.miniProgram.getEnv(function(res) {
+        console.log(res.miniprogram); // true
+    })
+    var app = window.app || {};
+    function RandomNumBoth(Min,Max){
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.round(Rand * Range); //四舍五入
+        return num;
+    }
+    app.init = function(){
+        //超出边界后销毁叶子
+        function removePetal(){
+            var petalImg = $('.petalBox').find('img');
+            var documentWidth = $(document).width();
+            for(var i = 0; i < petalImg.length; i++){
+                var moveBoxLeft = petalImg.eq(i).offset().left;
+                if(moveBoxLeft > documentWidth){
+                    petalImg.eq(i).remove();
+                }
+            }
+        }
+        //创建叶子
+        function creatPetal(){
+            var petalNum = 7;
+            var petalImg = $('.petalBox').find('img');
+
+            var newArr = [];
+            function creatNewArr(){
+                var newArrItem = parseInt(Math.random() * 7);
+                if(newArr.indexOf(newArrItem) === -1){
+                    newArr.push(newArrItem);
+                }
+                if(newArr.length < 7){
+                    creatNewArr()
+                }else{
+                    creatNewArr = null;
+                }
+            }
+            creatNewArr();
+            if(petalImg.length < petalNum){
+                for(var i = 0; i < (petalNum - petalImg.length); i ++){
+                    var classNum = newArr[parseInt(Math.random() * 7)];
+                    var imageWidth = RandomNumBoth(28,50)/100 + 'rem';
+                    var imageHeight = RandomNumBoth(45,70)/100 + 'rem';
+                    var imageLeft = RandomNumBoth(-10,10) + '%';
+                    var imageTop = RandomNumBoth(-10,60) + '%';
+                    $('.petalBox').append('<img class="luoye luoye'+classNum+'" style="width:'+imageWidth+';height:'+imageHeight+
+                        ';left:'+imageLeft+';top:'+imageTop+';" src=images/temp_music/temp2/petal_0'+parseInt(Math.random() * 3)+'.png alt="">');
+                }
+            }
+        }
+        //梅花飘落动画
+        setInterval(function(){
+            creatPetal();
+            removePetal();
+        },30);
+    };
+    window.onload = function(){
+        var that = this
+        app.init();
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+</script>
+</html>

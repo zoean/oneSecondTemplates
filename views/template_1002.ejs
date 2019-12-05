@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+    <link rel="stylesheet" href="stylesheets/common/cpt/photo_animate.css">
+    <link rel="stylesheet" href="stylesheets/temp_music/index_1002.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <script src="javascripts/libs/flexible/flexible_css.js"></script>
+    <script src="javascripts/libs/flexible/flexible.js"></script>
+    <style>
+        #flower-leftBottom{width:3.26rem;height:8.44rem;position:absolute;bottom:0; left:-0.4rem;transform-origin: left bottom; }
+        .leftBottomStart{animation: flowerLeftBotomStart 3s linear 0s both;}
+        .leftBottomMove{animation: flowerLeftBottomMove 5s linear 0s infinite;}
+        @keyframes flowerLeftBotomStart { 0%{transform: translateX(-3rem);} 100%{transform: translateX(0rem);}}
+        @keyframes flowerLeftBottomMove {0%{transform: rotate(0deg);}50%{transform: rotate(5deg);}100%{transform: rotate(0deg);}}
+        #flower-rightTop{width:7.52rem;height:5.56rem;position: absolute;right:0;top:0;transform-origin: right top;}
+        .rightTopStart{animation:flowerRightTopStart 3s linear 0s both;}
+        .rightTopEnd{animation: flowerRightTopEnd 6s linear 0s infinite;}
+        @keyframes flowerRightTopStart { 0%{transform: translateX(5rem);} 100%{transform: translateX(0rem);}}
+        @keyframes flowerRightTopEnd { 0%{transform: rotate(0)}50%{transform: rotate(6deg)} 100%{transform: rotate(0);}}
+        #flower-rightMiddle{width:1.96rem;height:5.36rem;position:absolute;right:0;top:40%;}
+        #shoes{width:3.06rem;height:3.69rem;position: absolute;bottom:0rem;right:-0.2rem;}
+        #bubble_1{width:2.64rem;height:2.64rem;position:absolute;bottom:-0.8rem;right:-0.8rem;}
+        #bubble_2{width:3.64rem;height:3.64rem;position:absolute;bottom:-0.8rem;left:-0.8rem;}
+        #bubble_3{width:2rem;height:2rem;position:absolute;bottom:0.8rem;left:1.8rem;}
+        #bubble_4{width:2.5rem;height:2.5rem;position:absolute;bottom:0.8rem;left:4.8rem;}
+        .petalBox{ width: 100%;  height: 100%;  position: absolute;  top: 0;  left: 0;  z-index: 4;}
+        .petalBox img{position: absolute;}
+        .bubbleMove{animation: bubbleMove 30s linear 0s both}
+        @keyframes bubbleMove {
+            0%{transform: translateY(0)}
+            100%{transform: translateY(-20rem)}
+        }
+        #bgMusic{position: absolute;}
+        .photo{
+            background:url('images/static.gif') no-repeat center;background-size: 100% 100%;
+            border: 7px solid #fff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<audio id="bgMusic"  autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+<div id="bgMusicControl" class="bgMusicPlay"></div>
+<div class="tem_wrap">
+    <p class="bg1"></p>
+    <p class="bg2"></p>
+    <p class="bg3"></p>
+    <p class="bg4"></p>
+    <p class="bg5"></p>
+    <p class="bg6"></p>
+    <p class="bg7"></p>
+    <div class="bg8"></div>
+    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;">
+        <img id="flower-leftBottom" class="leftBottomStart" src="images/temp_music/temp3/leftBottom.png" alt="">
+        <img id="flower-rightMiddle" src="images/temp_music/temp3/rightMiddle.png" alt="">
+        <img id="flower-rightTop" class="rightTopStart" src="images/temp_music/temp3/rightTop.png" alt="">
+        <img id="shoes" src="images/temp_music/temp3/shoes.png" alt="">
+        <img id="bubble_1" src="images/temp_music/temp3/bubble.png" alt="">
+        <img id="bubble_2" src="images/temp_music/temp3/bubble.png" alt="">
+        <img id="bubble_3" src="images/temp_music/temp3/bubble.png" alt="">
+        <img id="bubble_4" src="images/temp_music/temp3/bubble.png" alt="">
+    </div>
+    <div class="petalBox">
+
+    </div>
+    <div class="animat_item">
+        <div id="animat_photo">
+            <ul long="<%= list.length %>">
+                <li>
+                    <span class="photo">
+                        <img class="showimg" src="images/static.png" alt="" />
+                    </span>
+                    <span class="photo">
+                        <img class="showimg" src="images/static.png" alt="" />
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <ul id="saveImgSrc"  style="display: none;">
+        </ul>
+        <div class="animat_crane">
+            <!--<img class="crane1" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane2" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane3" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane4" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane5" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane6" src="images/temp_music/temp1/crane.png" alt="">-->
+            <!--<img class="crane7" src="images/temp_music/temp1/crane.png" alt="">-->
+        </div>
+        <div id="loadimgWrap" style="display: none;">
+            <img  alt="">
+            <img  alt="">
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    //保存当前相册选择的音乐id和模板信息
+    var selectTemplateId = "<%= templateId%>";
+    var selectSongId = "<%= songId%>";
+    var albumType = "<%= postType%>";
+    var tempId = "<%= id%>";
+</script>
+<script src="javascripts/libs/jquery-3.3.1.min.js"></script>
+<script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+<script src="javascripts/libs/zepto/fastclick.js"></script>
+<script src="javascripts/libs/zepto/fx.js"></script>
+<script src="javascripts/libs/zepto/touch.js"></script>
+<script src="javascripts/common/mod/queryString.js"></script>
+<script src="javascripts/common/mod/subString.js"></script>
+<script src="javascripts/common/cpt/index.js"></script>
+<script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+<script>
+    wx.miniProgram.getEnv(function(res) {
+        console.log(res.miniprogram); // true
+    })
+    var app = window.app || {};
+    function RandomNumBoth(Min,Max){
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.round(Rand * Range); //四舍五入
+        return num;
+    }
+    app.init = function(){
+        var petalBox = $('.petalBox');
+        petalBox.addClass('dsadsadadd');
+        var bubbleArr = [];
+        var wh = [0.5,0.7,0.9,1.1,1.3,1.5,1.7,1.9,2.1,2.3,0.6,0.8,1,1.2,1.4,1.6,1.8,2,2.2,2.4]
+        //创建气泡
+        function creatBubble(){
+            var leftPosition = parseInt(Math.random()*100) + '%';
+            var bottomPosition = parseInt(Math.random() * 2) + 'rem'
+            var bubbleSize = wh[parseInt(Math.random()*wh.length)] + 'rem';
+            petalBox.append('<img class="bubbleMove" style="position: absolute;width:'+bubbleSize+';height:'+bubbleSize+
+                ';left:'+leftPosition+';bottom:'+bottomPosition+';" src="images/temp_music/temp3/bubble.png" alt="">')
+        }
+
+        //销毁气泡
+        function removeBubble(){
+            var bubbleMove = $('.bubbleMove');
+            for(var i = 0 ; i < bubbleMove.length ; i ++){
+                var moveLength = bubbleMove.eq(i).offset().top;
+                if(moveLength < 0){
+                    bubbleMove.eq(i).remove()
+                }
+            }
+
+        }
+        setInterval(function(){
+            creatBubble();
+            removeBubble();
+        },4000)
+    }
+
+
+    window.onload = function(){
+        var leftBottom = document.getElementById('flower-leftBottom');
+        var rightTop = document.getElementById('flower-rightTop');
+        leftBottom.addEventListener('webkitAnimationEnd', function(){
+            leftBottom.classList.remove('leftBottomStart');
+            leftBottom.classList.add('leftBottomMove')
+        });
+        rightTop.addEventListener('webkitAnimationEnd',function(){
+            rightTop.classList.remove('rightTopStart');
+            rightTop.classList.add('rightTopEnd')
+        });
+        app.init();
+        //图片没有下载完成前，先显示默认图片
+//        var imgload = $('.hideImg');
+//        var imgshow = $('.showimg');
+//        console.log(imgload);
+//        var successLoadImg = 0;//保存下载成功图片的数量
+//        var i = 0
+//        var testImgLoad = function(){
+//            if(i == imgload.length){
+//                i = 0
+//            }
+//            if(imgload[i].complete){
+//                console.log(imgload[i].complete)
+//                imgshow[i].src = imgload[i].src;
+//                successLoadImg ++
+//                i++
+//                console.log('保存下载成功图片的数量'+successLoadImg);
+//                if(successLoadImg < imgload.length){
+//                    testImgLoad()
+//                }
+//            }else{
+//                i++
+//                if(successLoadImg < imgload.length){
+//                    testImgLoad()
+//                }
+//            }
+//        }
+//        testImgLoad();
+        //图片没有下载完成前，先显示默认图片
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+</script>
+</html>

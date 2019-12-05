@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+      <title><%= title %></title>
+      <link rel="stylesheet" href="stylesheets/temp_teletext/index_1.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+      <link rel="icon" href="favicon.ico">      
+      <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+      <script src="javascripts/libs/flexible/flexible_css.js"></script>
+      <script src="javascripts/libs/flexible/flexible.js"></script>
+      <style>
+          body{
+            color:#ff9c00;
+            text-align: left;
+          }
+          #bg_01{width:100%;height:100%;background:url(images/temp_teletext/temp4/bg_01.jpg) repeat-y center top;}
+          .tem_wrap{  width:100%;  height:100%;  position: relative;  overflow-y: auto;  }
+          #sun{width:3.93rem;height:3.78rem;position: absolute;top:0;left:0; z-index: 5 }
+          #bluehouse{width:2.08rem;height:1.84rem;position: absolute;bottom:1rem;right:0.3rem;z-index: 3;}
+          #pickhouse{width:1.49rem;height:1rem;position: absolute;bottom:1rem;right:2rem;z-index: 2;}
+          #b{width:0.6rem;height:0.773rem;position: absolute;bottom: 1.8rem;  right: 2.3rem;
+              animation: bmove 4s linear 0s infinite;}
+          #mogu{width:2.98rem;height:1.77rem;position: absolute;bottom:2.6rem;right:0.5rem;
+              animation: mogumove 6s linear 0s infinite;z-index: 2;}
+          #leaves{width:0.48rem;height:0.53rem; position: absolute;bottom:2.6rem;right:1.6rem;z-index: 3;}
+          #cloud{width:0.81rem;height:0.44rem;position: absolute;bottom:5rem;right:0;
+              animation: cloudmove 10s linear 0s infinite;}
+          #chicken_1{width:0.52rem;height:0.4rem;position: absolute;bottom:1.2rem;right:5rem;}
+          #chicken_2{width:0.64rem;height:0.36rem;position: absolute;bottom:1.2rem;right:4rem;}
+          #chicken_3{width:0.64rem;height:0.36rem;position: absolute;bottom:2rem;right:4.5rem;}
+          #love{width:2rem;height:0.74rem;position: absolute;bottom:3.8rem;right:1rem;
+              animation:mogumove 6s linear 0s infinite;}
+          .photoTitle{  font-size: 23px;  font-weight: 600;  text-align: center;  width: 100%;}
+          .imgTitle{  width:8rem;  font-size: 15px;  line-height: 20px;  margin:0.5rem auto;  text-align: center;  }
+
+          #content{  width:100%;  height:auto;  overflow: hidden;  position: absolute;z-index:3; }
+          #inner{  width:100%;  margin-top:4rem;  margin-bottom:4rem;  }
+          .photoTitle{  font-size: 23px;  font-weight: 600;  text-align: center;  width: 100%;  }
+          #inner img{  width:6.4rem;  display: block;  margin:0 auto;  }
+          .imgTitle{  width:8rem;  font-size: 15px; line-height: 20px;  margin:0.5rem auto;  text-align: center;  }
+          #bottom_ink img{  width: 10rem;  height: 9.56rem;  }
+          #contentWrap{  width: 100%;height:auto;position: absolute;top:0;left:0;overflow: hidden;z-index: 4;}
+          #bgMusic{position: absolute;}
+          /*.imgWrap{    position: relative;  width: 6.4rem; height: 6.4rem;  margin: 0 auto;  background-image:url('images/static.png');background-size: 100% 100%;border-radius: 55px;}*/
+          .showimg{
+            border-radius: 55px;
+            border:5px solid #fff;
+          }
+      </style>
+  </head>
+  <body>
+    <div style="width:100%;height:100%;position: absolute;top:0;left:0;">
+          <div id="bg_01"></div>
+          <img id="sun" class="sunstart" src="images/temp_teletext/temp4/sun.png" alt="">
+          <img id="bluehouse" src="images/temp_teletext/temp4/bluehouse.png" alt="">
+          <img id="pickhouse" class="rightTopStart" src="images/temp_teletext/temp4/pickhouse.png" alt="">
+          <img id="b" src="images/temp_teletext/temp4/B.png" alt="">
+          <img id="mogu" src="images/temp_teletext/temp4/mogu.png" alt="">
+          <img id="leaves" src="images/temp_teletext/temp4/leaves.png" alt="">
+          <img id="cloud" src="images/temp_teletext/temp4/cloud.png" alt="">
+          <img src="images/temp_teletext/temp4/chicken1.png" alt="" id="chicken_1">
+          <img src="images/temp_teletext/temp4/chicken2.png" alt="" id="chicken_2">
+          <img src="images/temp_teletext/temp4/chicken3.png" alt="" id="chicken_3">
+          <img src="images/temp_teletext/temp4/love.png" alt="" id="love">
+    </div>
+    <audio id="bgMusic"  autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+    <div id="bgMusicControl" class="bgMusicPlay"></div>
+    <div class="tem_wrap"  id="wrapper">
+        <div id="content">
+            <div id="inner">
+                <p class="photoTitle"><%= title%></p>
+                <ul>
+                    <% for (var i=0; i<list.length; i++) { %>
+                    <li>                        
+                        <p class="imgTitle"><%= list[i].des%></p>
+                        <div style="width:6.4rem;margin:0 auto;">
+                          <div class="imgWrap" style="height: 6.7rem;">
+                            <img class="showimg" loadSrc="<%= list[i].resUrl%>!viewWidth">
+                          </div>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script>
+      //保存当前相册选择的音乐id和模板信息
+      var selectTemplateId = "<%= templateId%>";
+      var selectSongId = "<%= songId%>";
+      var albumType = "<%= postType%>";
+  </script>
+  <script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+  <script src="javascripts/libs/zepto/fastclick.js"></script>
+  <script src="javascripts/libs/zepto/fx.js"></script>
+  <script src="javascripts/libs/zepto/touch.js"></script>
+  <script src="javascripts/common/mod/queryString.js"></script>
+  <script src="javascripts/common/mod/subString.js"></script>
+  <!--<script src="javascripts/index/index_01.js"></script>-->
+  <script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+  <script src="javascripts/common/cpt/iscroll.js"></script>
+  <script src="javascripts/common/cpt/lazyLoad.js"></script>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+      <title><%= title %></title>
+      <link rel="stylesheet" href="stylesheets/common/cpt/photo_animate.css">
+      <link rel="stylesheet" href="stylesheets/temp_music/index_1001.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+      <link rel="icon" href="favicon.ico">      
+      <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+      <script src="javascripts/libs/flexible/flexible_css.js"></script>
+      <script src="javascripts/libs/flexible/flexible.js"></script>
+      <style>
+          #bgMusic{position: absolute;}
+          .filter{
+              background:url('images/static.gif') no-repeat center;background-size: 90% 90%;
+          }
+      </style>
+  </head>
+  <body>    
+    <audio id="bgMusic"  autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+    <div id="bgMusicControl" class="bgMusicPlay"></div>
+    <div class="tem_wrap">
+      <p class="bg1"></p>
+      <p class="bg2"></p>
+      <p class="bg3"></p>
+      <p class="bg4"></p>
+      <p class="bg5"></p>
+      <div class="animat_item">
+        <div id="animat_photo">
+          <ul long="<%= list.length %>">
+            <li>
+            	<span class="photo" style="height: 4rem;">
+            		<span class="filter">
+                      <img class="showimg" src="images/static.png" alt="" />
+                      <span class="filterImg"></span>
+                      <span class="loadimg"></span>
+                    </span>
+            	</span>
+                <span class="photo" style="height: 4rem;">
+            		<span class="filter">
+                      <img class="showimg" src="images/static.png" alt="" />
+                      <span class="filterImg"></span>
+                        <span class="loadimg"></span>
+                    </span>
+            	</span>
+            </li>
+         </ul>
+
+        </div>
+          <ul id="saveImgSrc"  style="display: none;">
+          </ul>
+        <div class="animat_crane">
+          <img class="crane1" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane2" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane3" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane4" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane5" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane6" src="images/temp_music/temp1/crane.png" alt="">
+          <img class="crane7" src="images/temp_music/temp1/crane.png" alt="">
+        </div>
+          <div id="loadimgWrap" style="display: none;">
+              <img  alt="">
+              <img  alt="">
+          </div>
+      </div> 
+      <!-- <ul id="albumEdit">
+        <li><span>模板</span></li> 
+        <li><span>音乐</span></li> 
+        <li><span>添加</span></li> 
+        <li><span>保存</span></li> 
+      </ul> -->
+      <!-- <div id="editTemp" class="editItem">
+        <s class="close"></s>
+        <div id="tempWrap">
+          <ul>
+            <li class="cur">
+              <img src="img/images/temp1.png" alt="">
+              <p>复古相册</p>
+            </li>
+            <li>
+              <img src="img/images/temp2.png" alt="">
+              <p>梅花三弄</p>
+            </li>
+            <li>
+              <img src="img/images/temp1.png" alt="">
+              <p>复古相册</p>
+            </li>
+            <li>
+              <img src="img/images/temp2.png" alt="">
+              <p>梅花三弄</p>
+            </li>
+            <li>
+              <img src="img/images/temp1.png" alt="">
+              <p>复古相册</p>
+            </li>
+            <li>
+              <img src="img/images/temp2.png" alt="">
+              <p>梅花三弄</p>
+            </li>
+            <li>
+              <img src="img/images/temp1.png" alt="">
+              <p>复古相册</p>
+            </li>
+            <li>
+              <img src="img/images/temp2.png" alt="">
+              <p>梅花三弄</p>
+            </li>
+          </ul>
+        </div>        
+      </div>
+      <div id="editMusic" class="editItem">
+        <s class="close"></s>
+        <div id="musicWrap">
+          <ul>
+            <li class="cur">
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>红楼一梦</h3>
+              <p>鲁巴</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>红楼一梦</h3>
+              <p>鲁巴</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+            <li>
+              <h3>一朵云在蓝天飘过</h3>
+              <p>乌兰马托</p>
+            </li>
+          </ul>
+        </div>        
+      </div> -->
+    </div>       
+  </body>
+  <script>
+      //保存当前相册选择的音乐id和模板信息
+      var selectTemplateId = "<%= templateId%>";
+      var selectSongId = "<%= songId%>";
+      var albumType = "<%= postType%>";
+      var tempId = "<%= id%>";
+  </script>
+  <script src="javascripts/libs/jquery-3.3.1.min.js"></script>
+  <script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+  <script src="javascripts/libs/zepto/fastclick.js"></script>
+  <script src="javascripts/libs/zepto/fx.js"></script>
+  <script src="javascripts/libs/zepto/touch.js"></script>
+  <script src="javascripts/common/mod/queryString.js"></script>
+  <script src="javascripts/common/mod/subString.js"></script>
+  <script src="javascripts/common/cpt/index.js"></script>
+  <script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+  <script>
+    wx.miniProgram.getEnv(function(res) {
+     console.log(res.miniprogram); // true 
+   })
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+    window.onload = function(){
+        //图片没有下载完成前，先显示默认图片
+//        var imgload = $('.hideImg');
+//        var imgshow = $('.showimg');
+//        console.log(imgload);
+//        var successLoadImg = 0;//保存下载成功图片的数量
+//        var i = 0
+//        var testImgLoad = function(){
+//            if(i == imgload.length){
+//                i = 0
+//            }
+//            if(imgload[i].complete){
+//                console.log(imgload[i].complete)
+//                imgshow[i].src = imgload[i].src;
+//                successLoadImg ++
+//                i++
+//                console.log('保存下载成功图片的数量'+successLoadImg);
+//                if(successLoadImg < imgload.length){
+//                    testImgLoad()
+//                }
+//            }else{
+//                i++
+//                if(successLoadImg < imgload.length){
+//                    testImgLoad()
+//                }
+//            }
+//        }
+//        testImgLoad();
+        //图片没有下载完成前，先显示默认图片
+
+        //点击空白处关闭弹窗
+
+    }
+  </script>
+</html>

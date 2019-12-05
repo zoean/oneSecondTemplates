@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=no">
+      <title><%= title %></title>
+      <link rel="stylesheet" href="stylesheets/temp_teletext/index_1.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/common/cpt/ablum_edit.css">
+      <link rel="icon" href="favicon.ico">      
+      <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+      <script src="javascripts/libs/flexible/flexible_css.js"></script>
+      <script src="javascripts/libs/flexible/flexible.js"></script>
+      <style>
+          body,html{width:100%;height:100%;}
+          #wrapper{width: 100%;height: 100%;
+              /*background: linear-gradient(to bottom right, #d963f8 , #f09f9b);*/
+              /*position: absolute;top:0;left:0;z-index: 2;*/
+              background:url('images/temp_teletext/temp5/bg.jpg') no-repeat center;
+              background-size: 100% 100%;
+          }
+          #bg_pic{width:100%;height: 100%;display: block;
+          }
+          #content{  width:100%;  height:auto;  overflow: hidden;  position: relative; z-index: 3; }
+          #inner{  width:100%;  margin-top:4rem;  margin-bottom:4rem;  }
+          .photoTitle{  font-size: 23px;  font-weight: 600;  text-align: center;  width: 100%;  color:#3d56f6;  }
+          #inner img{  width:6.4rem;  display: block;  margin:0 auto;  }
+          .imgTitle{  width:8rem;  font-size: 15px;  color:#3d56f6;  line-height: 20px;  margin:0.5rem auto;  text-align: center;  }
+          #bottom_ink img{  width: 10rem;  height: 9.56rem;  }
+          #contentWrap{  width: 100%;height:100%;position: absolute;top:0;left:0;overflow-y: auto;}
+          #bgMusic{position: absolute;}
+          /*.imgWrap{    position: relative;  width: 6.4rem; height: 6.4rem;  margin: 0 auto;  background-image:url('images/static.png');background-size: 100% 100%;border-radius: 44px;}*/
+      </style>
+  </head>
+  <body>
+    <div style="width:100%;height:100%;position: absolute;top:0;left:0;">
+        <p id="bg_pic"></p>
+    </div>
+
+    <audio id="bgMusic" autoplay="autoplay" src="<%= songUrl %>" loop="loop"></audio>
+    <div id="bgMusicControl" class="bgMusicPlay"></div>
+    <div class="tem_wrap" id="wrapper">
+        <div id="content">
+            <div id="inner">
+                <p class="photoTitle"><%= title%></p>
+                <ul>
+                    <% for (var i=0; i<list.length; i++) { %>
+                    <li>
+                        <p class="imgTitle"><%= list[i].des%></p>
+                        <div style="width:6.4rem;margin:0 auto;border:5px solid #fff;border-radius: 50px;">
+                          <div class="imgWrap" style="height: 6.7rem;">
+                            <img class="showimg" style="border-radius: 44px;" loadSrc="<%= list[i].resUrl%>!viewWidth">
+                          </div>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script>
+      //保存当前相册选择的音乐id和模板信息
+      var selectTemplateId = "<%= templateId%>";
+      var selectSongId = "<%= songId%>";
+      var albumType = "<%= postType%>";
+  </script>
+  <script src="javascripts/libs/zepto/zepto.min-1.2.0.js"></script>
+  <script src="javascripts/libs/zepto/fastclick.js"></script>
+  <script src="javascripts/libs/zepto/fx.js"></script>
+  <script src="javascripts/libs/zepto/touch.js"></script>
+  <script src="javascripts/common/mod/queryString.js"></script>
+  <script src="javascripts/common/mod/subString.js"></script>
+  <!--<script src="javascripts/index/index_01.js"></script>-->
+  <script type="text/javascript" src="javascripts/common/cpt/albumTemEdit.js"></script>
+  <script src="javascripts/common/cpt/iscroll.js"></script>
+  <script src="javascripts/common/cpt/lazyLoad.js"></script>
+</html>
